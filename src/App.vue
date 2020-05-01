@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <Header></Header>
+      <NewPlanetForm></NewPlanetForm>
+      <PlanetTable></PlanetTable>
+<!--    Add content here-->
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import NewPlanetForm from '@/components/NewPlanetForm'
+import PlanetTable from '@/components/PlanetTable'
+import ConfirmMessage from '@/components/ConfirmMessage'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+      Footer,
+      NewPlanetForm,
+      PlanetTable,
+      ConfirmMessage
   }
 }
 </script>
@@ -23,6 +35,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>
