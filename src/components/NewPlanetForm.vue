@@ -17,7 +17,7 @@
                     <label for="system">System Name *</label>
                     <input id="system" class="form-control" v-model.trim="newSystemName">
                 </div>
-
+<!--                Look into way to loop through all items so that all three dropdowns only need one list of items-->
                 <div class="form-group">
                     <label for="resource1">Resource 1 *</label>
                     <select id="resource1" class="form-control" v-model.trim="newResource1">
@@ -169,12 +169,15 @@
         methods: {
             addPlanet() {
                 this.errors = []
-                if (this.newPlanetName && this.newSystemName && this.resource1 && this.newGlyphs) {
+                //TODO figure out how to use input from selected for validation
+                // validation for required fields before submitting the form
+                if (this.newPlanetName && this.newSystemName && this.newGlyphs) {
                     let planet = { name: this.newPlanetName, system: this.newSystemName, resource1: this.newResource1,
                     resource2: this.newResource2, resource3: this.newResource3, coordinates: this.newCoordinates,
                     glyphs: this.newGlyphs, author: this.newAuthor, comments: this.newComment }
-
-                    // todo emit message to parent with new planet
+                    //emit message to parent
+                    this.$emit('planet-added', planet)
+                    //clear all fields for next entry
                     this.newPlanetName = ''
                     this.newSystemName = ''
                     this.newResource1 = 'Choose a resource'
@@ -194,5 +197,5 @@
 </script>
 
 <style>
-    /*add styles*/
+
 </style>

@@ -1,30 +1,46 @@
 <template>
   <div id="app">
    <Header></Header>
-      <NewPlanetForm></NewPlanetForm>
-      <PlanetTable></PlanetTable>
-<!--    Add content here-->
+      <RouterView
+              v-bind:planets="planets"
+              v-on:planet-added="newPlanetAdded"></RouterView>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
+    // importing all components for use in the app
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewPlanetForm from '@/components/NewPlanetForm'
-import PlanetTable from '@/components/PlanetTable'
+import PlanetSearch from '@/components/PlanetSearch'
 import ConfirmMessage from '@/components/ConfirmMessage'
+import PlanetTable from "@/components/PlanetTable";
 
 
 export default {
   name: 'App',
+    data() {
+      return {
+          planets: [],
+      }
+    },
   components: {
     Header,
       Footer,
       NewPlanetForm,
-      PlanetTable,
-      ConfirmMessage
-  }
+      PlanetSearch,
+      ConfirmMessage,
+      PlanetTable
+  },
+    methods: {
+      newPlanetAdded(planet) {
+          this.planets.push(planet)
+          this.planets.sort(function(s1, s2) {
+              return s1.resource1.toLowerCase() > s2.resource1.toLowerCase() ? -1 : 1
+          })
+      }
+    }
 }
 </script>
 
@@ -36,5 +52,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 10px;
+    background: midnightblue;
 }
 </style>
