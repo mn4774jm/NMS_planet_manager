@@ -10,6 +10,10 @@
             </span>
 
             <span class="p-3">
+                <router-link to="/search">Search Worlds</router-link>
+            </span>
+
+            <span class="p-3">
                 <router-link to="/about">About</router-link>
                 </span>
         </div>

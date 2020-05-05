@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!--        template goes here-->
+        <p>Search feature will go here</p>
     </div>
 </template>
 
