@@ -1,6 +1,7 @@
 <template>
   <div id="app">
    <Header></Header>
+    <Links></Links>
       <RouterView
               v-bind:planets="planets"
               v-on:planet-added="newPlanetAdded"></RouterView>
@@ -16,6 +17,7 @@ import NewPlanetForm from '@/components/NewPlanetForm'
 import PlanetSearch from '@/components/PlanetSearch'
 import ConfirmMessage from '@/components/ConfirmMessage'
 import PlanetTable from "@/components/PlanetTable";
+import Links from "@/components/Links"
 
 
 export default {
@@ -31,7 +33,8 @@ export default {
       NewPlanetForm,
       PlanetSearch,
       ConfirmMessage,
-      PlanetTable
+      PlanetTable,
+      Links
   },
     methods: {
       newPlanetAdded(planet) {
@@ -52,6 +55,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 10px;
-    background: midnightblue;
 }
 </style>
