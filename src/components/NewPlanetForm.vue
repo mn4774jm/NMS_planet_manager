@@ -4,6 +4,10 @@
             <li v-for="error in errors">{{ error }}</li>
         </div>
 
+        <div class="alert alert-success" v-show="success && success.length > 0">
+            <li v-for="yay in success">{{ yay }}</li>
+        </div>
+
         <div class="card add-planet m-2 p-2">
             <form>
                 <h4 class="card-title">Add New Planet</h4>
@@ -163,26 +167,30 @@
                 newGlyphs: '',
                 newAuthor: '',
                 newComment: '',
-                errors: []
+                errors: [],
+                success: []
             }
         },
         methods: {
             addPlanet() {
                 this.errors = []
+                this.success = []
                 //TODO figure out how to use input from selected for validation
                 // validation for required fields before submitting the form
                 if (this.newPlanetName && this.newSystemName && this.newGlyphs) {
                     let planet = { name: this.newPlanetName, system: this.newSystemName, resource1: this.newResource1,
                     resource2: this.newResource2, resource3: this.newResource3, coordinates: this.newCoordinates,
                     glyphs: this.newGlyphs, author: this.newAuthor, comments: this.newComment }
+
+                    this.success.push('New planet Submitted Successfully')
                     //emit message to parent
                     this.$emit('planet-added', planet)
                     //clear all fields for next entry
                     this.newPlanetName = ''
                     this.newSystemName = ''
-                    this.newResource1 = 'Choose a resource'
-                    this.newResource2 = 'Choose a resource'
-                    this.newResource3 = 'Choose a resource'
+                    this.newResource1 = ''
+                    this.newResource2 = ''
+                    this.newResource3 = ''
                     this.newCoordinates = ""
                     this.newGlyphs = ''
                     this.newAuthor = ''
