@@ -15,7 +15,6 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewPlanetForm from '@/components/NewPlanetForm'
 import PlanetSearch from '@/components/PlanetSearch'
-import ConfirmMessage from '@/components/ConfirmMessage'
 import PlanetTable from "@/components/PlanetTable";
 import Links from "@/components/Links"
 
@@ -32,7 +31,6 @@ export default {
       Footer,
       NewPlanetForm,
       PlanetSearch,
-      ConfirmMessage,
       PlanetTable,
       Links
   },

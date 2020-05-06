@@ -2,7 +2,7 @@
     <div class="header">
 
         <div class="jumbotron">
-            <h1 class="display-4" id="title">NMS Planet Achieve</h1>
+            <h1 class="display-4" id="title">NMS Planet Archive</h1>
         </div>
 
     </div>
