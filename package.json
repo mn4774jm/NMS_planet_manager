@@ -1,23 +1,21 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
+  "name": "nms_database_final",
+  "version": "1.0.0",
+  "description": "\"NMS database to store planetary information\"",
+  "main": "server.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Thomas Mullins",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "bootstrap": "^4.4.1",
-    "bootstrap-vue": "^2.13.0",
-    "core-js": "^3.6.4",
-    "nodemon": "^2.0.3",
-    "vue": "^2.6.11",
-    "vue-router": "^3.1.6"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "pg": "^8.0.3",
+    "sequelize": "^5.21.7",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
-    "vue-template-compiler": "^2.6.11"
+    "sqlite3": "^4.2.0"
   }
 }
