@@ -1,7 +1,7 @@
 let express = require('express')
 let Planets = require('../models').Planets
 let db = require('../models')
-let Planet = db.Planet
+let Planet = db.Planets
 let router = express.Router()
 
 // router to get all of the planets in the database in alphabetical order

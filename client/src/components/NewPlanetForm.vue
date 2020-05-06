@@ -1,9 +1,11 @@
 <template>
     <div>
+<!--        display error message from addPlanet method if condition triggered-->
         <div class="alert alert-danger" v-show="errors && errors.length > 0">
             <li v-for="error in errors">{{ error }}</li>
         </div>
 
+<!--        display success message if condition triggered-->
         <div class="alert alert-success" v-show="success && success.length > 0">
             <li v-for="yay in success">{{ yay }}</li>
         </div>
@@ -11,7 +13,7 @@
         <div class="card add-planet m-2 p-2">
             <form>
                 <h4 class="card-title">Add New Planet</h4>
-
+<!--                user inputs to form and labels-->
                 <div class="form-group">
                     <label for="name">Planet Name *</label>
                     <input id="name" class="form-control" v-model.trim="newPlanetName">
@@ -21,7 +23,7 @@
                     <label for="system">System Name *</label>
                     <input id="system" class="form-control" v-model.trim="newSystemName">
                 </div>
-<!--                Look into way to loop through all items so that all three dropdowns only need one list of items-->
+<!--                *****Look into way to loop through all items so that all three dropdowns only need one list of items-->
                 <div class="form-group">
                     <label for="resource1">Resource 1 *</label>
                     <select id="resource1" class="form-control" v-model.trim="newResource1">
@@ -156,6 +158,7 @@
 <script>
     export default {
         name: 'NewPlanetForm',
+        // define defaults for form fields
         data() {
             return {
                 newPlanetName: '',
@@ -181,7 +184,7 @@
                     let planet = { name: this.newPlanetName, system: this.newSystemName, resource1: this.newResource1,
                     resource2: this.newResource2, resource3: this.newResource3, coordinates: this.newCoordinates,
                     glyphs: this.newGlyphs, author: this.newAuthor, comments: this.newComment }
-
+                    // save success message to success list to display in template
                     this.success.push('New planet Submitted Successfully')
                     //emit message to parent
                     this.$emit('planet-added', planet)
@@ -197,6 +200,7 @@
                     this.newComment = ''
 
                 } else {
+                    // add error message to errors list to be displayed in template
                     this.errors.push('Please fill in required fields')
                 }
             }

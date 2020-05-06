@@ -1,6 +1,7 @@
 <template>
     <div class="links">
         <div class="m-2">
+
             <span class="p-3">
                 <router-link to="/">Submit Planet</router-link>
             </span>

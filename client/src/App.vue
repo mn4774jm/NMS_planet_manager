@@ -34,13 +34,24 @@ export default {
       PlanetTable,
       Links
   },
+    mounted() {
+      this.updatePlanet()
+    },
     methods: {
       newPlanetAdded(planet) {
-          this.planets.push(planet)
-          this.planets.sort(function(s1, s2) {
-              return s1.resource1.toLowerCase() > s2.resource1.toLowerCase() ? -1 : 1
+          this.$planetService.addPlanet(planet).then( planet => {
+              this.updatePlanet()
+
+          }).catch(err => {
+              let msg = err.response.data.join(', ')
+              alert("error adding planet.\n")
           })
-      }
+      },
+        updatePlanet() {
+          this.$planetService.getAllPlanets().then( planets => {
+              this.planets = planets
+          })
+        }
     }
 }
 </script>
