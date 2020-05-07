@@ -14,6 +14,11 @@ export default {
         return axios.post(base_url, planet).then(response => {
             return response.data
         })
+    },
+    searchPlanet(){
+        return axios.get(base_url).then( response => {
+            return response.data
+        })
     }
 
 }

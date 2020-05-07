@@ -137,6 +137,8 @@
                 <div class="form-group">
                     <label for="glyphs">Portal Glyphs *</label>
                     <input id="glyphs" class="form-control" v-model.trim="newGlyphs">
+<!--                    TODO try to make this a 'what is this" button-->
+<!--                    <img src="@/assets/glyph.jpg" alt="glyph map" width="300">-->
                 </div>
 
                 <div class="form-group">

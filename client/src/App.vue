@@ -4,7 +4,8 @@
     <Links></Links>
       <RouterView
               v-bind:planets="planets"
-              v-on:planet-added="newPlanetAdded"></RouterView>
+              v-on:planet-added="newPlanetAdded">
+      </RouterView>
     <Footer></Footer>
   </div>
 </template>
@@ -39,7 +40,7 @@ export default {
     },
     methods: {
       newPlanetAdded(planet) {
-          this.$planetService.addPlanet(planet).then( planet => {
+          this.$planetService.addPlanet(planet).then( () => {
               this.updatePlanet()
 
           }).catch(err => {
@@ -51,6 +52,9 @@ export default {
           this.$planetService.getAllPlanets().then( planets => {
               this.planets = planets
           })
+        },
+        searchPlanet(){
+          // TODO create search method
         }
     }
 }
