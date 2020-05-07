@@ -15,8 +15,8 @@ export default {
             return response.data
         })
     },
-    searchPlanet(){
-        return axios.get(base_url).then( response => {
+    searchPlanet(planet){
+        return axios.get(base_url, planet).then( response => {
             return response.data
         })
     }

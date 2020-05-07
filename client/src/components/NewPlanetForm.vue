@@ -24,9 +24,11 @@
                     <input id="system" class="form-control" v-model.trim="newSystemName">
                 </div>
 <!--                *****Look into way to loop through all items so that all three dropdowns only need one list of items-->
+<div class="b-dropdown-form">
                 <div class="form-group">
                     <label for="resource1">Resource 1 *</label>
                     <select id="resource1" class="form-control" v-model.trim="newResource1">
+                        <option value="" disabled hidden>Select a resource</option>
                         <option>Ferrite Dust</option>
                         <option>Pure Ferrite</option>
                         <option>Magnetised Ferrite</option>
@@ -128,7 +130,7 @@
                         <option>Frost Crystal</option>
                     </select>
                 </div>
-
+</div>
                 <div class="form-group">
                     <label for="coordinates">Galactic Coordinates</label>
                     <input id="coordinates" class="form-control" v-model.trim="newCoordinates">
@@ -165,9 +167,9 @@
             return {
                 newPlanetName: '',
                 newSystemName: '',
-                newResource1: 'Choose a resource',
-                newResource2: 'Choose a resource',
-                newResource3: 'Choose a resource',
+                newResource1: '',
+                newResource2: '',
+                newResource3: '',
                 newCoordinates: "",
                 newGlyphs: '',
                 newAuthor: '',
@@ -211,5 +213,8 @@
 </script>
 
 <style>
-
+.form-group input{
+    text-align: center;
+    align-items: center;
+}
 </style>

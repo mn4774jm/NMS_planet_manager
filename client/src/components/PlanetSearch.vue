@@ -85,9 +85,9 @@
             return {
                 newPlanetName: '',
                 newSystemName: '',
-                newResource1: 'Choose a resource',
-                newResource2: 'Choose a resource',
-                newResource3: 'Choose a resource',
+                newResource1: '',
+                newResource2: '',
+                newResource3: '',
                 newCoordinates: "",
                 newGlyphs: '',
                 newAuthor: '',
