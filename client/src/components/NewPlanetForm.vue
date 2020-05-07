@@ -23,12 +23,14 @@
                     <label for="system">System Name *</label>
                     <input id="system" class="form-control" v-model.trim="newSystemName">
                 </div>
-<!--                *****Look into way to loop through all items so that all three dropdowns only need one list of items-->
-<div class="b-dropdown-form">
                 <div class="form-group">
-                    <label for="resource1">Resource 1 *</label>
+                    <label>Planetary Resources</label>
+                </div>
+
+                <div class="dropdown">
+<!--                    <label for="resource1">Resource 1 *</label>-->
                     <select id="resource1" class="form-control" v-model.trim="newResource1">
-                        <option value="" disabled hidden>Select a resource</option>
+                        <option value="" disabled hidden>Resource 1</option>
                         <option>Ferrite Dust</option>
                         <option>Pure Ferrite</option>
                         <option>Magnetised Ferrite</option>
@@ -61,9 +63,11 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="resource2">Resource 2</label>
+                <div class="dropdown">
+
+<!--                    <label for="resource2">Resource 2</label>-->
                     <select id="resource2" class="form-control" v-model.trim="newResource2">
+                        <option value="" disabled hidden>Resource 2</option>
                         <option>Ferrite Dust</option>
                         <option>Pure Ferrite</option>
                         <option>Magnetised Ferrite</option>
@@ -96,9 +100,11 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="resource3">Resource 3</label>
+                <div class="dropdown">
+<!--                    <label for="resource3">Resource 3</label>-->
                     <select id="resource3" class="form-control" v-model.trim="newResource3">
+                        <option value="" disabled hidden>Resource 3</option>
+
                         <option>Ferrite Dust</option>
                         <option>Pure Ferrite</option>
                         <option>Magnetised Ferrite</option>
@@ -130,7 +136,7 @@
                         <option>Frost Crystal</option>
                     </select>
                 </div>
-</div>
+<p></p>
                 <div class="form-group">
                     <label for="coordinates">Galactic Coordinates</label>
                     <input id="coordinates" class="form-control" v-model.trim="newCoordinates">
@@ -217,4 +223,13 @@
     text-align: center;
     align-items: center;
 }
+    .dropdown{
+        width: 478px;
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
 </style>
