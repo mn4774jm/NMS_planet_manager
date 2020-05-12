@@ -19,4 +19,30 @@ router.post('/planets', function(req, res, next){
     })
 })
 
+router.patch('/planets/:id', function(req, res, next){
+    Planet.update( req.body, { where: {id: req.params.id } })
+        .then( rowsModified => {
+            if (!rowsModified[0]) {
+                return res.status(404).send('Not Found')
+            } else {
+                return res.send('ok')
+            }
+        }).catch( err => {
+            if (err instanceof Sequelize.ValidationError) {
+                let messages = err.errors.map( (e) => e.message)
+                return res.status(400).json(messages)
+            }
+    })
+})
+
+router.delete('/planets/:id', function(req, res, next){
+    Planet.destroy({where: { id: req.params.id}})
+        .then( rowsModified => {
+            return res.send('ok')
+        }).catch( err => next(err))
+})
+
+
+
+
 module.exports = router

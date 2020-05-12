@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-
+<!--        display title using jumbotron for formatting-->
         <div class="jumbotron">
             <h1 class="display-4" id="title">NMS Planet Archive</h1>
         </div>

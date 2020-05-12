@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
-  Planets.sync({force: true}).then( () => {
+  Planets.sync({force: false}).then( () => {
     console.log('synced planet data')
   })
 

@@ -1,5 +1,6 @@
 <template>
-    <tr  v-bind:key="planet.resource1">
+<!--    create template element; provide object locations-->
+    <tr v-bind:key="planet.resource1">
         <td>{{ planet.name }}</td>
         <td>{{ planet.system }}</td>
         <td>{{ planet.resource1 }}</td>
@@ -9,6 +10,7 @@
         <td>{{ planet.glyphs }}</td>
         <td>{{ planet.author }}</td>
         <td>{{ planet.comments }}</td>
+<!--        admin menu to only show delete option when clicked-->
         <td v-show="admin">
             <img class='delete-icon' v-on:click="deletePlanet(planet)" src="@/assets/delete2.png">
         </td>

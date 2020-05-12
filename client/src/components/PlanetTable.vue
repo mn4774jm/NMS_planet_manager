@@ -19,6 +19,7 @@
                         <th>Glyphs</th>
                         <th>Author</th>
                         <th>Comments</th>
+                        <th v-show="adminTable">Delete</th>
                     </tr>
                     <PlanetRow
                             v-for="planet in planets" v-bind:key="planet.name"
@@ -45,7 +46,7 @@
 </template>
 
 <script>
-import PlanetRow from "./PlanetRow";
+import PlanetRow from "@/components/PlanetRow.vue";
 export default {
     name: 'PlanetTable',
     components: {PlanetRow},

@@ -7,6 +7,7 @@
       <RouterView
               v-bind:planets="planets"
               v-on:planet-added="newPlanetAdded"
+              v-on:planet-deleted="deletePlanet"
               v-on:planet-search="searchPlanet">
       </RouterView>
     <Footer></Footer>
@@ -64,9 +65,11 @@ export default {
               this.planets = planets
           })
         },
-        deletePlanet(planet){
-          this.$planetService.deletePlanet(planet.id).then( () =>
-              this.updatePlanet())
+        deletePlanet(planet) {
+          this.planets = this.planets.filter( function(s) {return s != planet})
+            // this.$planetService.deletePlanet(planet.id).then(() => {
+            //     this.updatePlanet()
+            // })
         }
     }
 }
