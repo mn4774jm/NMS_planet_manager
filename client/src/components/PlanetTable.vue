@@ -4,6 +4,10 @@
         <div class="card planet-list m-2 p-2">
             <h4 class="card-title">Planets</h4>
             <div id="planet-table">
+                <div class="admin-table-toggle form-check">
+                    <input id="admin-table" type="checkbox" class="form-check-input" v-model="adminTable">
+                    <label for="admin-table" class="form-check-label">Admin</label>
+                </div>
                 <table class="table">
                     <tr>
                         <th>Name</th>
@@ -16,18 +20,24 @@
                         <th>Author</th>
                         <th>Comments</th>
                     </tr>
-                    <tr class="planet-row" v-for="planet in planets" v-bind:key="planet.resource1">
-                        <td>{{ planet.name }}</td>
-                        <td>{{ planet.system }}</td>
-                        <td>{{ planet.resource1 }}</td>
-                        <td>{{ planet.resource2 }}</td>
-                        <td>{{ planet.resource3 }}</td>
-                        <td>{{ planet.coordinates }}</td>
-                        <td>{{ planet.glyphs }}</td>
-                        <td>{{ planet.author }}</td>
-                        <td>{{ planet.comments }}</td>
+                    <PlanetRow
+                            v-for="planet in planets" v-bind:key="planet.name"
+                            v-bind:planet="planet"
+                            v-bind:admin="adminTable"
+                            v-on:delete-planet="planetDeleted">
+                    </PlanetRow>
+<!--                    <tr class="planet-row" v-for="planet in planets" v-bind:key="planet.resource1">-->
+<!--                        <td>{{ planet.name }}</td>-->
+<!--                        <td>{{ planet.system }}</td>-->
+<!--                        <td>{{ planet.resource1 }}</td>-->
+<!--                        <td>{{ planet.resource2 }}</td>-->
+<!--                        <td>{{ planet.resource3 }}</td>-->
+<!--                        <td>{{ planet.coordinates }}</td>-->
+<!--                        <td>{{ planet.glyphs }}</td>-->
+<!--                        <td>{{ planet.author }}</td>-->
+<!--                        <td>{{ planet.comments }}</td>-->
 
-                    </tr>
+<!--                    </tr>-->
                 </table>
             </div>
         </div>
@@ -35,11 +45,22 @@
 </template>
 
 <script>
+import PlanetRow from "./PlanetRow";
 export default {
     name: 'PlanetTable',
+    components: {PlanetRow},
+    data() {
+        return {
+            adminTable: false
+        }
+    },
     props: {
         planets: Array,
-        admin: Boolean
+    },
+    methods: {
+        planetDeleted(planet) {
+            this.$emit('delete-planet', planet)
+        }
     }
 }
 </script>

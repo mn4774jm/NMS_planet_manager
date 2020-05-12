@@ -21,8 +21,8 @@ export default {
             return response.data
         })
     },
-    deletePlanet() {
-        return axios.delete(`${base_url}/${id}`),then( response => {
+    deletePlanet(id) {
+        return axios.delete(`${base_url}/${id}`).then( response => {
             return response.data
         })
     }
