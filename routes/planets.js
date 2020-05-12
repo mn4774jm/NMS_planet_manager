@@ -4,15 +4,18 @@ let db = require('../models')
 let Planet = db.Planets
 let router = express.Router()
 
-// router to get all of the planets in the database in alphabetical order
+// router to get all of the planets in the database in order alphabetically by resource1
+//     .get is used for fetching data
 router.get('/planets', function(req,res,next){
-    Planets.findAll({order: ['name']})
+    Planets.findAll({order: ['resource1']})
         .then( planets => {
+            // return json data
             return res.json(planets)
         })
         .catch( err => next.err())
 })
 
+// used to create planet object, req.body contains any data that the vue client has sent in th e request
 router.post('/planets', function(req, res, next){
     Planet.create(req.body).then( (data)=> {
         return res.status(201).send('ok')
@@ -22,16 +25,7 @@ router.post('/planets', function(req, res, next){
 router.patch('/planets/:id', function(req, res, next){
     Planet.update( req.body, { where: {id: req.params.id } })
         .then( rowsModified => {
-            if (!rowsModified[0]) {
-                return res.status(404).send('Not Found')
-            } else {
-                return res.send('ok')
-            }
-        }).catch( err => {
-            if (err instanceof Sequelize.ValidationError) {
-                let messages = err.errors.map( (e) => e.message)
-                return res.status(400).json(messages)
-            }
+            return res.send('ok')
     })
 })
 

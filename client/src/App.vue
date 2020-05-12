@@ -4,10 +4,11 @@
    <Header></Header>
 <!--      used to display Links component template-->
     <Links></Links>
+<!--      router view is used to display templates from other components as assigned in the index-->
       <RouterView
               v-bind:planets="planets"
               v-on:planet-added="newPlanetAdded"
-              v-on:planet-deleted="deletePlanet"
+              v-on:delete-planet="deletePlanet"
               v-on:planet-search="searchPlanet">
       </RouterView>
     <Footer></Footer>
@@ -49,27 +50,26 @@ export default {
       newPlanetAdded(planet) {
           this.$planetService.addPlanet(planet).then( () => {
               this.updatePlanet()
-
           }).catch(err => {
               let msg = err.response.data.join(', ')
               alert("error adding planet.\n")
           })
       },
+
         updatePlanet() {
           this.$planetService.getAllPlanets().then( planets => {
               this.planets = planets
           })
         },
+
         searchPlanet(planet){
           this.$planetService.searchPlanet(planet).then( planets => {
               this.planets = planets
           })
         },
+
         deletePlanet(planet) {
           this.planets = this.planets.filter( function(s) {return s != planet})
-            // this.$planetService.deletePlanet(planet.id).then(() => {
-            //     this.updatePlanet()
-            // })
         }
     }
 }

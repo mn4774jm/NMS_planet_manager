@@ -26,11 +26,12 @@
             admin: Boolean,
         },
         methods: {
+            // emit back to app.vue to delete planet
             deletePlanet(planet) {
                 if(confirm(`Purge ${planet.name}?`)) {
                     this.$emit('delete-planet', planet)
                 }
-            }
+            },
         }
     }
 </script>

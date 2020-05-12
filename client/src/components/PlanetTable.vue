@@ -27,18 +27,7 @@
                             v-bind:admin="adminTable"
                             v-on:delete-planet="planetDeleted">
                     </PlanetRow>
-<!--                    <tr class="planet-row" v-for="planet in planets" v-bind:key="planet.resource1">-->
-<!--                        <td>{{ planet.name }}</td>-->
-<!--                        <td>{{ planet.system }}</td>-->
-<!--                        <td>{{ planet.resource1 }}</td>-->
-<!--                        <td>{{ planet.resource2 }}</td>-->
-<!--                        <td>{{ planet.resource3 }}</td>-->
-<!--                        <td>{{ planet.coordinates }}</td>-->
-<!--                        <td>{{ planet.glyphs }}</td>-->
-<!--                        <td>{{ planet.author }}</td>-->
-<!--                        <td>{{ planet.comments }}</td>-->
 
-<!--                    </tr>-->
                 </table>
             </div>
         </div>
