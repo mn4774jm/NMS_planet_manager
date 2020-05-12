@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+<!--      used to display header component template-->
    <Header></Header>
+<!--      used to display Links component template-->
     <Links></Links>
       <RouterView
               v-bind:planets="planets"
@@ -28,6 +30,7 @@ export default {
           planets: [],
       }
     },
+    // list of all components that are used in template
   components: {
     Header,
       Footer,
@@ -36,7 +39,9 @@ export default {
       PlanetTable,
       Links
   },
+    // calls listed method(s) on launch.
     mounted() {
+      // fetches planet data
       this.updatePlanet()
     },
     methods: {
@@ -58,6 +63,10 @@ export default {
           this.$planetService.searchPlanet(planet).then( planets => {
               this.planets = planets
           })
+        },
+        deletePlanet(planet){
+          this.$planetService.deletePlanet(planet.id).then( () =>
+              this.updatePlanet())
         }
     }
 }

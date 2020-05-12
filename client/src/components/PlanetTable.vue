@@ -1,5 +1,6 @@
 <template>
     <div>
+<!--        creates header for display-->
         <div class="card planet-list m-2 p-2">
             <h4 class="card-title">Planets</h4>
             <div id="planet-table">
@@ -25,6 +26,7 @@
                         <td>{{ planet.glyphs }}</td>
                         <td>{{ planet.author }}</td>
                         <td>{{ planet.comments }}</td>
+
                     </tr>
                 </table>
             </div>
@@ -36,7 +38,8 @@
 export default {
     name: 'PlanetTable',
     props: {
-        planets: Array
+        planets: Array,
+        admin: Boolean
     }
 }
 </script>

@@ -30,7 +30,7 @@
                 <div class="dropdown">
 <!--                    <label for="resource1">Resource 1 *</label>-->
                     <select id="resource1" class="form-control" v-model.trim="newResource1">
-                        <option value="" disabled hidden>Resource 1</option>
+                        <option value="" disabled hidden>Resource 1*</option>
                         <option>Ferrite Dust</option>
                         <option>Pure Ferrite</option>
                         <option>Magnetised Ferrite</option>
@@ -67,7 +67,7 @@
 
 <!--                    <label for="resource2">Resource 2</label>-->
                     <select id="resource2" class="form-control" v-model.trim="newResource2">
-                        <option value="" disabled hidden>Resource 2</option>
+                        <option value="" disabled hidden>Resource 2*</option>
                         <option>Ferrite Dust</option>
                         <option>Pure Ferrite</option>
                         <option>Magnetised Ferrite</option>
@@ -103,7 +103,7 @@
                 <div class="dropdown">
 <!--                    <label for="resource3">Resource 3</label>-->
                     <select id="resource3" class="form-control" v-model.trim="newResource3">
-                        <option value="" disabled hidden>Resource 3</option>
+                        <option value="" disabled hidden>Resource 3*</option>
 
                         <option>Ferrite Dust</option>
                         <option>Pure Ferrite</option>
@@ -190,7 +190,8 @@
                 this.success = []
                 //TODO figure out how to use input from selected for validation
                 // validation for required fields before submitting the form
-                if (this.newPlanetName && this.newSystemName && this.newGlyphs) {
+                if (this.newPlanetName && this.newSystemName && this.newGlyphs && this.newResource1 && this.newResource2
+                && this.newResource3) {
                     let planet = { name: this.newPlanetName, system: this.newSystemName, resource1: this.newResource1,
                     resource2: this.newResource2, resource3: this.newResource3, coordinates: this.newCoordinates,
                     glyphs: this.newGlyphs, author: this.newAuthor, comments: this.newComment }
@@ -226,9 +227,7 @@
     .dropdown{
         width: 478px;
         display: inline-flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        text-align: center;
 
     }
 
