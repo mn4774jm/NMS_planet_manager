@@ -7,12 +7,22 @@ let router = express.Router()
 // router to get all of the planets in the database in order alphabetically by resource1
 //     .get is used for fetching data
 router.get('/planets', function(req,res,next){
-    Planets.findAll({order: ['resource1']})
-        .then( planets => {
-            // return json data
-            return res.json(planets)
-        })
-        .catch( err => next.err())
+
+    console.log(req.query)
+
+    if (req.query.element) {
+        Planets.findAll({where: {resource1: req.query.element}}, {order: ['resource1']})
+            .then(planets => {
+                // return json data
+                return res.json(planets)
+            })
+            .catch(err => next.err())
+    } else {
+        Planets.findAll({order: ['resource1']})
+            .then( planets => {
+                return res.json(planets)
+            })
+    }
 })
 
 // used to create planet object, req.body contains any data that the vue client has sent in th e request
@@ -29,8 +39,8 @@ router.patch('/planets/:id', function(req, res, next){
     })
 })
 
-router.delete('/planets/:id', function(req, res, next){
-    Planet.destroy({where: { id: req.params.id}})
+router.delete('/planets/:name', function(req, res, next){
+    Planet.destroy({where: { id: req.params.name}})
         .then( rowsModified => {
             return res.send('ok')
         }).catch( err => next(err))

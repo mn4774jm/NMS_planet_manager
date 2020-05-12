@@ -40,7 +40,7 @@
             </select>
             <div>
                 <p></p>
-                <button class="btn btn-primary" v-on:click.prevent="searchPlanet">Search</button>
+                <button class="btn btn-primary" v-on:click.prevent="planetSearch">Search</button>
             </div>
         </div>
 </form>
@@ -83,17 +83,17 @@
         // define defaults for form fields
         data() {
             return {
-                newPlanetName: '',
-                newSystemName: '',
-                newResource1: '',
-                newResource2: '',
-                newResource3: '',
-                newCoordinates: "",
-                newGlyphs: '',
-                newAuthor: '',
-                newComment: '',
-                errors: [],
-                success: []
+                newSearch: ''
+            }
+        },
+        methods: {
+            planetSearch() {
+                this.errors = []
+                if(this.newSearch){
+                    let element = this.newSearch
+                    this.$emit('planet-search', element)
+
+                }
             }
         }
     }

@@ -62,14 +62,17 @@ export default {
           })
         },
 
-        searchPlanet(planet){
-          this.$planetService.searchPlanet(planet).then( planets => {
+        searchPlanet(resource1){
+          this.$planetService.searchPlanet(resource1).then( planets => {
               this.planets = planets
           })
         },
 
         deletePlanet(planet) {
-          this.planets = this.planets.filter( function(s) {return s != planet})
+          this.$planetService.deletePlanet(planet.id).then( () => {
+              this.updatePlanet()
+
+          })
         }
     }
 }
