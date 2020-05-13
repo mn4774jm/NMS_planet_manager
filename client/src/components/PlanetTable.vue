@@ -50,6 +50,7 @@ export default {
             adminTable: false
         }
     },
+
     props: {
         planets: Array,
     },
@@ -58,7 +59,7 @@ export default {
         planetDeleted(planet) {
             this.$emit('delete-planet', planet)
         }
-    }
+    },
 }
 </script>
 

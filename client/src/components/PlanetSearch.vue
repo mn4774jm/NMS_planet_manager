@@ -1,11 +1,8 @@
 <template>
     <div>
 
-        <div class="alert alert-danger" v-show="errors && errors.length > 0">
-            <li v-for="error in errors">{{ error }}</li>
-        </div>
+
 <form>
-    <h1>Search page is a WIP to be developed in the near future</h1>
         <div class="form-group">
             <label for="searchResource">Please select an element to search *</label>
             <select id="searchResource" class="form-control" v-model.trim="newSearch">
@@ -62,18 +59,11 @@
                         <th>Author</th>
                         <th>Comments</th>
                     </tr>
-<!--                    loop through each planet returned and get data from object-->
-                    <tr class="planet-row" v-for="planet in planets" v-bind:key="planet.resource1">
-                        <td>{{ planet.name }}</td>
-                        <td>{{ planet.system }}</td>
-                        <td>{{ planet.resource1 }}</td>
-                        <td>{{ planet.resource2 }}</td>
-                        <td>{{ planet.resource3 }}</td>
-                        <td>{{ planet.coordinates }}</td>
-                        <td>{{ planet.glyphs }}</td>
-                        <td>{{ planet.author }}</td>
-                        <td>{{ planet.comments }}</td>
-                    </tr>
+
+                    <PlanetRow
+                            v-for="planet in planets" v-bind:key="planet.id"
+                            v-bind:planet="planet">
+                    </PlanetRow>
                 </table>
             </div>
         </div>
@@ -81,18 +71,24 @@
 </template>
 
 <script>
+    import PlanetRow from "@/components/PlanetRow.vue";
+
     export default {
         name: 'PlanetSearch',
+        components: {PlanetRow},
+
         // define defaults for form fields
         data() {
             return {
                 newSearch: '',
-                planets: []
+
             }
+        },
+        props: {
+            planets: Array,
         },
         methods: {
             planetSearch() {
-                this.errors = []
                 if(this.newSearch){
                     let element = this.newSearch
                     this.$emit('planet-search', element)
