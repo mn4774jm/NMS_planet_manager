@@ -1,6 +1,7 @@
 
 module.exports = (sequelize, DataTypes) => {
 
+  // set up DB table
   let Planets = sequelize.define('Planets', {
     name: {
       type: DataTypes.STRING,
@@ -28,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
+  // sync false to not overwrite data on each restart
   Planets.sync({force: false}).then( () => {
     console.log('synced planet data')
   })

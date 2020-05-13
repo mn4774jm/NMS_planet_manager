@@ -21,7 +21,7 @@ router.get('/planets', function(req,res,next){
         Planets.findAll({order: ['resource1']})
             .then( planets => {
                 return res.json(planets)
-            })
+            }).catch(err => next.err())
     }
 })
 
@@ -32,12 +32,13 @@ router.post('/planets', function(req, res, next){
     })
 })
 
-router.patch('/planets/:id', function(req, res, next){
-    Planet.update( req.body, { where: {id: req.params.id } })
-        .then( rowsModified => {
-            return res.send('ok')
-    })
-})
+// This code doesn't seem to be doing anything
+// router.patch('/planets/:id', function(req, res, next){
+//     Planet.update( req.body, { where: {id: req.params.id } })
+//         .then( rowsModified => {
+//             return res.send('ok')
+//     })
+// })
 
 router.delete('/planets/:name', function(req, res, next){
     Planet.destroy({where: { id: req.params.name}})

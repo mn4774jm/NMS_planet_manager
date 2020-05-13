@@ -199,6 +199,8 @@
                 // validation for required fields before submitting the form
                 if (this.newPlanetName && this.newSystemName && this.newGlyphs && this.newResource1 && this.newResource2
                 && this.newResource3) {
+
+                    // creating new planet object to be emitted
                     let planet = { name: this.newPlanetName, system: this.newSystemName, resource1: this.newResource1,
                     resource2: this.newResource2, resource3: this.newResource3, coordinates: this.newCoordinates,
                     glyphs: this.newGlyphs, author: this.newAuthor, comments: this.newComment }
@@ -242,7 +244,6 @@
     text-align: center;
 
     }
-
 
 
 

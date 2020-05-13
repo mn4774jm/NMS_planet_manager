@@ -5,6 +5,7 @@
             <li v-for="error in errors">{{ error }}</li>
         </div>
 <form>
+    <h1>Search page is a WIP to be developed in the near future</h1>
         <div class="form-group">
             <label for="searchResource">Please select an element to search *</label>
             <select id="searchResource" class="form-control" v-model.trim="newSearch">
@@ -49,6 +50,7 @@
             <h4 class="card-title">Planets</h4>
             <div id="planet-table">
                 <table class="table">
+<!--                    column titles for table-->
                     <tr>
                         <th>Name</th>
                         <th>System</th>
@@ -60,6 +62,7 @@
                         <th>Author</th>
                         <th>Comments</th>
                     </tr>
+<!--                    loop through each planet returned and get data from object-->
                     <tr class="planet-row" v-for="planet in planets" v-bind:key="planet.resource1">
                         <td>{{ planet.name }}</td>
                         <td>{{ planet.system }}</td>
@@ -83,7 +86,8 @@
         // define defaults for form fields
         data() {
             return {
-                newSearch: ''
+                newSearch: '',
+                planets: []
             }
         },
         methods: {

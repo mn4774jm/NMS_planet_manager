@@ -49,6 +49,7 @@ export default {
     },
     methods: {
       // each method calls the planetService API
+      //   send planet object to API to be added to the database
       newPlanetAdded(planet) {
           this.$planetService.addPlanet(planet).then( () => {
               this.updatePlanet()
@@ -57,7 +58,7 @@ export default {
               alert("error adding planet.\n")
           })
       },
-
+        // getting all planets from the database, this method is called rugularily to keep current
         updatePlanet() {
           this.$planetService.getAllPlanets().then( planets => {
               this.planets = planets
@@ -66,7 +67,7 @@ export default {
               alert("error updating planets")
           })
         },
-
+        //WIP to get return(s) for user search
         searchPlanet(resource1){
           this.$planetService.searchPlanet(resource1).then( planets => {
               this.planets = planets
@@ -76,6 +77,7 @@ export default {
         })
         },
 
+        // pass planet id information to API to be destroyed
         deletePlanet(planet) {
           this.$planetService.deletePlanet(planet.id).then( () => {
               this.updatePlanet()

@@ -8,8 +8,10 @@
                     <input id="admin-table" type="checkbox" class="form-check-input" v-model="adminTable">
                     <label for="admin-table" class="form-check-label">Admin</label>
                 </div>
+<!--                header for planets table-->
                 <table class="table">
                     <tr>
+<!--                        header names-->
                         <th>Name</th>
                         <th>System</th>
                         <th>Resource 1</th>
@@ -19,8 +21,12 @@
                         <th>Glyphs</th>
                         <th>Author</th>
                         <th>Comments</th>
+<!--                        delete is only shown when v-show is triggered in PlanetTable-->
                         <th v-show="adminTable">Delete</th>
                     </tr>
+
+<!--                    display values from PlanetRow component in template-->
+<!--                    loop through each row to bind html to data-->
                     <PlanetRow
                             v-for="planet in planets" v-bind:key="planet.name"
                             v-bind:planet="planet"
@@ -48,6 +54,7 @@ export default {
         planets: Array,
     },
     methods: {
+        // method call to emit planet to App
         planetDeleted(planet) {
             this.$emit('delete-planet', planet)
         }
