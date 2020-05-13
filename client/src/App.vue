@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    // importing all components for use in the app
+    // importing all need vue files and registering as components for use in the app
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import NewPlanetForm from '@/components/NewPlanetForm'
@@ -27,6 +27,7 @@ import Links from "@/components/Links"
 
 export default {
   name: 'App',
+    // data holds the planets array
     data() {
       return {
           planets: [],
@@ -47,6 +48,7 @@ export default {
       this.updatePlanet()
     },
     methods: {
+      // each method calls the planetService API
       newPlanetAdded(planet) {
           this.$planetService.addPlanet(planet).then( () => {
               this.updatePlanet()
@@ -59,20 +61,28 @@ export default {
         updatePlanet() {
           this.$planetService.getAllPlanets().then( planets => {
               this.planets = planets
+          }).catch(err => {
+              let msg = err.response.data.join(', ')
+              alert("error updating planets")
           })
         },
 
         searchPlanet(resource1){
           this.$planetService.searchPlanet(resource1).then( planets => {
               this.planets = planets
-          })
+          }).catch(err => {
+            let msg = err.response.data.join(', ')
+            alert("error searching planets")
+        })
         },
 
         deletePlanet(planet) {
           this.$planetService.deletePlanet(planet.id).then( () => {
               this.updatePlanet()
-
-          })
+          }).catch(err => {
+            let msg = err.response.data.join(', ')
+            alert("error deleting planet")
+        })
         }
     }
 }

@@ -14,6 +14,7 @@
             <form>
                 <h4 class="card-title">Add New Planet</h4>
 <!--                user inputs to form and labels-->
+<!--                v-model.trim used to bind form elements to the data-->
                 <div class="form-group">
                     <label for="name">Planet Name *</label>
                     <input id="name" class="form-control" v-model.trim="newPlanetName">
@@ -141,12 +142,17 @@
                     <label for="coordinates">Galactic Coordinates</label>
                     <input id="coordinates" class="form-control" v-model.trim="newCoordinates">
                 </div>
-
+<!--                Provide link for glyph translation-->
+<!--                open in new tab to not lose entered form data-->
                 <div class="form-group">
-                    <label for="glyphs">Portal Glyphs *</label>
+                    <label for="glyphs">Portal Glyphs *
+                        <a href="https://portalrepository.com/glyph-decoder/" target="_blank">
+                            <img src="@/assets/question-mark.png" width="30"></img>
+                        </a>
+                    </label>
                     <input id="glyphs" class="form-control" v-model.trim="newGlyphs">
 <!--                    TODO try to make this a 'what is this" button-->
-<!--                    <img src="@/assets/glyph.jpg" alt="glyph map" width="300">-->
+<!--                        <img src="@/assets/glyph.jpg" alt="glyph map" width="300">-->
                 </div>
 
                 <div class="form-group">
@@ -166,6 +172,7 @@
 </template>
 
 <script>
+
     export default {
         name: 'NewPlanetForm',
         // define defaults for form fields
@@ -186,19 +193,22 @@
         },
         methods: {
             addPlanet() {
+                // new lists to hold error/success messages
                 this.errors = []
                 this.success = []
-                //TODO figure out how to use input from selected for validation
                 // validation for required fields before submitting the form
                 if (this.newPlanetName && this.newSystemName && this.newGlyphs && this.newResource1 && this.newResource2
                 && this.newResource3) {
                     let planet = { name: this.newPlanetName, system: this.newSystemName, resource1: this.newResource1,
                     resource2: this.newResource2, resource3: this.newResource3, coordinates: this.newCoordinates,
                     glyphs: this.newGlyphs, author: this.newAuthor, comments: this.newComment }
+
                     // save success message to success list to display in template
                     this.success.push('New planet Submitted Successfully')
-                    //emit message to parent
+
+                    //emit message to parent (App.vue)
                     this.$emit('planet-added', planet)
+
                     //clear all fields for next entry
                     this.newPlanetName = ''
                     this.newSystemName = ''
@@ -214,21 +224,26 @@
                     // add error message to errors list to be displayed in template
                     this.errors.push('Please fill in required fields')
                 }
-            }
+            },
+
         }
     }
 </script>
 
 <style>
+
 .form-group input{
     text-align: center;
     align-items: center;
 }
-    .dropdown{
-        width: 478px;
-        display: inline-flex;
-        text-align: center;
+.dropdown{
+    width: 478px;
+    display: inline-flex;
+    text-align: center;
 
     }
+
+
+
 
 </style>
