@@ -4,8 +4,10 @@
 
 <form>
         <div class="form-group">
+<!--            dropdown for search query options-->
             <label for="searchResource">Please select an element to search *</label>
             <select id="searchResource" class="form-control" v-model.trim="newSearch">
+                <option value="" disabled hidden >Select Resource</option>
                 <option>Ferrite Dust</option>
                 <option>Pure Ferrite</option>
                 <option>Magnetised Ferrite</option>
@@ -38,7 +40,13 @@
             </select>
             <div>
                 <p></p>
+<!--                button event triggers call to API through planet search-->
                 <button class="btn btn-primary" v-on:click.prevent="planetSearch">Search</button>
+                <div class="admin-table-toggle form-check">
+<!--                    checkbox is created to show delete buttons when clicked-->
+                    <input id="admin-table" type="checkbox" class="form-check-input" v-model="adminTable">
+                    <label for="admin-table" class="form-check-label">Admin</label>
+                </div>
             </div>
         </div>
 </form>
@@ -58,11 +66,16 @@
                         <th>Glyphs</th>
                         <th>Author</th>
                         <th>Comments</th>
+<!--                        delete is only shown when v-show is triggered in PlanetTable-->
+                        <th v-show="adminTable">Delete</th>
                     </tr>
-
+                    <!--                    display values from PlanetRow component in template-->
+                    <!--                    loop through each row to bind html to data-->
                     <PlanetRow
-                            v-for="planet in planets" v-bind:key="planet.id"
-                            v-bind:planet="planet">
+                            v-for="planet in planets" v-bind:key="planet.name"
+                            v-bind:planet="planet"
+                            v-bind:admin="adminTable"
+                            v-on:delete-planet="planetDeleted">
                     </PlanetRow>
                 </table>
             </div>
@@ -81,6 +94,8 @@
         data() {
             return {
                 newSearch: '',
+                adminTable: false
+
 
             }
         },
@@ -94,6 +109,10 @@
                     this.$emit('planet-search', element)
 
                 }
+            },
+            // method call to emit planet to App
+            planetDeleted(planet) {
+                this.$emit('delete-planet', planet)
             }
         }
     }

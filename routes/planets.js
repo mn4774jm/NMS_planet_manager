@@ -15,15 +15,14 @@ router.get('/planets', function(req,res,next){
             .then(planets => {
                 // return json data
                 return res.json(planets)
-            })
-            .catch(err => next.err())
+            }).catch(err => next.err())
+
     } else if(req.query.element) {
         Planets.findAll({where: {resource2: req.query.element}}, {order: ['resource1']})
             .then(planets => {
                 // return json data
                 return res.json(planets)
-            })
-            .catch(err => next.err())
+            }).catch(err => next.err())
     } else {
         Planets.findAll({order: ['resource1']})
             .then( planets => {

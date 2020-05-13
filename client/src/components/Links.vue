@@ -6,9 +6,10 @@
                 <router-link to="/">Submit Planet</router-link>
             </span>
 
-            <span class="p-3">
-                <router-link to="/browse">Browse Worlds</router-link>
-            </span>
+<!--            features from this code were added to search worlds-->
+<!--            <span class="p-3">-->
+<!--                <router-link to="/browse">Browse Worlds</router-link>-->
+<!--            </span>-->
 
             <span class="p-3">
                 <router-link to="/search">Search Worlds</router-link>
